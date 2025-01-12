@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Arrowcontroller : MonoBehaviour
 {
@@ -9,25 +13,29 @@ public class Arrowcontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {   
-        Vector3 playerPos = new Vector3 (player.transform.position.x, player.transform.position.y, 0);
-        var angle = getAngleToMouse(player);
-        float floatAngle = (float)angle;
-        //float dAngle = floatAngle - transform.rotation.z;
-        //transform.RotateAround(playerPos, Vector3.forward, dAngle * Time.deltaTime);
-
-        transform.rotation = Quaternion.Euler(0, 0, floatAngle);
-       
+        float angle = getAngleToMouse(player);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    double getAngleToMouse(GameObject gameObject)
+    float getAngleToMouse(GameObject gameObject)
     {
-        double calc_angle = Math.Atan2(gameObject.transform.position.y - Input.mousePosition.y, gameObject.transform.position.x - Input.mousePosition.x);
-        return calc_angle * (180 / Math.PI);
+
+        float MouseX = Input.mousePosition.x;
+        float MouseY = Input.mousePosition.y;
+
+        float objX = gameObject.transform.position.x;
+        float objY = gameObject.transform.position.y;
+
+        Vector2 Point_2 = new Vector2(MouseX, 100f);
+        Vector2 Point_1 = new Vector2(objX, 0f);
+        float angle = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * Mathf.Rad2Deg;
+
+        return angle - 90;
     }
 }

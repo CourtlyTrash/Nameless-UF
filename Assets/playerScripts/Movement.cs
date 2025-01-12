@@ -18,6 +18,9 @@ public class Movement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        bool jump = Input.GetButton("Jump");
+
+        Debug.Log(jump);
 
         Vector2 movement = new Vector2(horizontalInput, 0);
         transform.Translate(movement  * playerSpeed * Time.deltaTime);
