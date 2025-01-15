@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once per frame
@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         bool jump = Input.GetButton("Jump");
 
-        Debug.Log(jump);
 
         Vector2 movement = new Vector2(horizontalInput, 0);
         transform.Translate(movement  * playerSpeed * Time.deltaTime);
