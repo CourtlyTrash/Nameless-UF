@@ -26,7 +26,6 @@ public class Arrowcontroller : MonoBehaviour
 
         Vector2 direction = new Vector2(mousePos.x - player.position.x, mousePos.y - player.position.y);
         
-        
-            transform.up = direction;
+        transform.up = direction;
     }
 }
