@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public Transform jumpArrow;
 
     private Rigidbody2D RB;
+    
 
 
     const float groundCheckRadius = 0.2f;
@@ -57,7 +58,6 @@ public class Movement : MonoBehaviour
             float jumpPowerY = Mathf.Sin(jumpArrow.rotation.eulerAngles.z * (Mathf.PI / 180) + Mathf.PI/2); // Calculates the amount of power in the Y axis and offsets it 90 degrees clockwise
 
             Vector2 jumpVector = new Vector2(jumpPowerX, jumpPowerY);
-            Debug.Log(jumpArrow.rotation.z);
 
             RB.AddForce(jumpVector * jumpPower, ForceMode2D.Impulse);
         }
