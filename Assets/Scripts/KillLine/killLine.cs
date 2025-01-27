@@ -18,7 +18,7 @@ public class killLine : MonoBehaviour
     void Update()
     {
         Vector3 Movement = new Vector3(0,1);
-        transform.Translate(Movement *  MoveSpeed * Time.deltaTime);
+        transform.Translate(Movement *  MoveSpeedStart * Time.deltaTime);
         
     }
 
