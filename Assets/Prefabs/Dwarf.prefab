@@ -200,13 +200,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 6228930449545403655}
-  playerSpeed: 1
-  jumpPower: 1
+  playerSpeed: 3
+  jumpPower: 5
   grounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   jumpArrow: {fileID: 4581106516243850966}
+  maxVelocity: 5
+  delayBetweenJumps: 0.1
 --- !u!50 &2422264864789617775
 Rigidbody2D:
   serializedVersion: 4

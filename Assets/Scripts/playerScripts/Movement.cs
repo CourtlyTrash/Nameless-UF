@@ -11,8 +11,11 @@ public class Movement : MonoBehaviour
     [SerializeField] bool grounded;
     [SerializeField] LayerMask groundLayer;
     public Transform jumpArrow;
+    public float maxVelocity = 5.0f;
+    public float delayBetweenJumps = 0.1f;
 
     private Rigidbody2D RB;
+    private Animator animator;
     
 
 
@@ -23,6 +26,7 @@ public class Movement : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         RB = gameObject.GetComponent<Rigidbody2D>();
         grounded = false;
+        animator = GetComponent<Animator>();
     }
 
     void GroundCheck()
@@ -46,6 +50,8 @@ public class Movement : MonoBehaviour
         bool jump = Input.GetButton("Jump");
 
 
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
         Vector2 movement = new Vector2(horizontalInput, 0);
         if (grounded)
         { 
@@ -59,7 +65,10 @@ public class Movement : MonoBehaviour
 
             Vector2 jumpVector = new Vector2(jumpPowerX, jumpPowerY);
 
-            RB.AddForce(jumpVector * jumpPower, ForceMode2D.Impulse);
+            if(RB.velocity.magnitude < maxVelocity)
+            {
+                RB.AddForce(jumpVector * jumpPower, ForceMode2D.Impulse);
+            }
         }
     }
 

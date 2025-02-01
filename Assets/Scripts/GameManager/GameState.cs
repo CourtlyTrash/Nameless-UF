@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         spawnPos = new Vector3(playerSpawn.position.x, playerSpawn.position.y, playerSpawn.transform.position.z);
         currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
     }
@@ -26,8 +26,7 @@ public class GameState : MonoBehaviour
 
     public void ResetPlayer()
     {
-        //currentPlayer.transform.position = playerSpawn.transform.position;
-
+        spawnPos = new Vector3(playerSpawn.position.x, playerSpawn.position.y, playerSpawn.transform.position.z);
         Destroy(currentPlayer);
         currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
     }
