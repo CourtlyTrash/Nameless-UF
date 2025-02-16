@@ -1,25 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     //all public variables
-    [SerializeField] Transform groundCheck;
-    public float playerSpeed = 1.0f;
-    public int jumpPower = 1;
-    [SerializeField] bool grounded;
-    [SerializeField] LayerMask groundLayer;
-    public Transform jumpArrow;
-    public float maxVelocity = 5.0f;
-    public float delayBetweenJumps = 0.1f;
+    [SerializeField]Transform groundCheck;
+    [SerializeField]float playerSpeed = 1.0f;
+    [SerializeField]int jumpPower = 1;
+    [SerializeField]bool grounded;
+    [SerializeField]LayerMask groundLayer;
+    [SerializeField]Transform jumpArrow;
+    [SerializeField]float delayBetweenJumps = 0.1f;
 
+    int maxMoveVelocity = 2;
+    int maxJumpVelocity = 5;
     private Rigidbody2D RB;
     private Animator animator;
     
+    const float groundCheckRadius = 0.5f;
 
 
-    const float groundCheckRadius = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +43,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -52,10 +53,12 @@ public class Movement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
-        Vector2 movement = new Vector2(horizontalInput, 0);
-        if (grounded)
-        { 
-            transform.Translate(movement  * playerSpeed * Time.deltaTime);
+        Vector2 movement = new Vector2(horizontalInput * playerSpeed, 0);
+        if (grounded && RB.velocity.magnitude < maxMoveVelocity)
+        {
+            //transform.Translate(movement  * playerSpeed * Time.deltaTime);
+            RB.AddForce(movement);
+            
         }
 
         if(jump && grounded)
@@ -65,7 +68,7 @@ public class Movement : MonoBehaviour
 
             Vector2 jumpVector = new Vector2(jumpPowerX, jumpPowerY);
 
-            if(RB.velocity.magnitude < maxVelocity)
+            if(RB.velocity.magnitude < maxJumpVelocity)
             {
                 RB.AddForce(jumpVector * jumpPower, ForceMode2D.Impulse);
             }

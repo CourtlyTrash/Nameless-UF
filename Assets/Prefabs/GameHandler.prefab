@@ -47,3 +47,6 @@ MonoBehaviour:
   playerSpawn: {fileID: 0}
   player: {fileID: 6230902143363841042, guid: e89ccf1afccdbc1478e5834811c7e809, type: 3}
   currentPlayer: {fileID: 0}
+  scenes:
+  - SampleScene
+  - testing

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
@@ -7,8 +9,11 @@ public class GameState : MonoBehaviour
     public Transform playerSpawn;
     public GameObject player;
     public GameObject currentPlayer;
+    public string[] scenes;
 
     private Vector3 spawnPos;
+
+
 
 
     // Start is called before the first frame update
