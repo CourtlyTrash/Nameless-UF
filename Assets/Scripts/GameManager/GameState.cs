@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
     public GameObject player;
     public GameObject currentPlayer;
     public string[] scenes;
+    public bool gameOver = false;
 
     private Vector3 spawnPos;
 
@@ -33,6 +34,9 @@ public class GameState : MonoBehaviour
     {
         spawnPos = new Vector3(playerSpawn.position.x, playerSpawn.position.y, playerSpawn.transform.position.z);
         Destroy(currentPlayer);
-        currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
+        if (!gameOver)
+        {
+            currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
+        }
     }
 }

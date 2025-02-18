@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 6228930449545403655}
   playerSpeed: 3
-  jumpPower: 5
+  jumpPower: 6
   grounded: 0
   groundLayer:
     serializedVersion: 2
