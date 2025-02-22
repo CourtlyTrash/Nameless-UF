@@ -27,12 +27,22 @@ public class killLine : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            if (!gameState.gameOver)
+            {
+                gameState.ResetPlayer();
 
-            gameState.ResetPlayer();
-            if (gameState.playerSpawn.position.y < gameObject.transform.position.y + gameObject.transform.localScale.y/2)
+            }
+
+            if (gameState.gameOver)
+            {
+                gameState.destroyPlayer();
+            }
+
+            if (gameState.playerSpawn.position.y < gameObject.transform.position.y + gameObject.transform.localScale.y/2 + 1)
             {
                 Debug.Log("spawn under lava");
                 gameState.gameOver = true;
+
             }
         }
 

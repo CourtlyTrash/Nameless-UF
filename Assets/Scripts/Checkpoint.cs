@@ -7,6 +7,7 @@ public class Checkpoint : MonoBehaviour
 {
 
     GameObject gameHandler;
+    [SerializeField] Sprite activeCheckpoint;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,8 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite = activeCheckpoint;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameHandler.GetComponent<GameState>().playerSpawn = transform;
         }
     }

@@ -14,7 +14,7 @@ public class GameState : MonoBehaviour
 
     private Vector3 spawnPos;
 
-
+    public GameObject gameOverScreen;
 
 
     // Start is called before the first frame update
@@ -27,7 +27,10 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameOver)
+        {
+            gameOverScreen.SetActive(true);
+        }
     }
 
     public void ResetPlayer()
@@ -38,5 +41,10 @@ public class GameState : MonoBehaviour
         {
             currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
         }
+    }
+
+    public void destroyPlayer()
+    {
+        Destroy(currentPlayer);
     }
 }
