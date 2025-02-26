@@ -25,6 +25,7 @@ public class killLine : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //To Do: if killline collides with the current spawn point then disable it, Make the kill line stop when game over.
         if(collision.gameObject.CompareTag("Player"))
         {
             if (!gameState.gameOver)
@@ -38,7 +39,7 @@ public class killLine : MonoBehaviour
                 gameState.destroyPlayer();
             }
 
-            if (gameState.playerSpawn.position.y < gameObject.transform.position.y + gameObject.transform.localScale.y/2 + 1)
+            if (gameState.playerSpawn.position.y < gameObject.transform.position.y + gameObject.transform.localScale.y/2 + 3)
             {
                 Debug.Log("spawn under lava");
                 gameState.gameOver = true;

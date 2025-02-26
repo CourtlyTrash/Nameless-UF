@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.TerrainTools;
+
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     [SerializeField]bool grounded;
     [SerializeField]LayerMask groundLayer;
     [SerializeField]Transform jumpArrow;
-    [SerializeField]float delayBetweenJumps = 0.1f;
+    
 
     int maxMoveVelocity = 2;
     int maxJumpVelocity = 5;

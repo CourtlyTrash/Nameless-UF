@@ -8,6 +8,7 @@ public class FollowPlayer : MonoBehaviour
     public float movementFactor = 1f;
     Vector3 velocity = Vector3.zero;
 
+
     void FixedUpdate()
     {
         if(target == null)
