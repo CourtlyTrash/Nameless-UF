@@ -11,14 +11,19 @@ public class FollowPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(target == null)
+        if (GameObject.Find("GameHandler").GetComponent<GameState>().currentPlayer != null)
         {
-            target = GameObject.Find("GameHandler").GetComponent<GameState>().currentPlayer.transform;
+            if(target == null)
+            {
+                target = GameObject.Find("GameHandler").GetComponent<GameState>().currentPlayer.transform;
+            }
+
+            Vector3 targetPos = new Vector3(transform.position.x, target.position.y, -1);
+
+            transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, movementFactor);   
+
         }
-
-        Vector3 targetPos = new Vector3(transform.position.x, target.position.y, -1);
-
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, movementFactor); 
+        
     }
 
 }

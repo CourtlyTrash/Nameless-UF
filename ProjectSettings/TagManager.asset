@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - gameHandler
+  - CheckPoint
+  - Lava
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - ground
   - Water
   - UI
-  - 
+  - Checkpoint
   - 
   - 
   - 

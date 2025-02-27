@@ -29,5 +29,6 @@ public class Checkpoint : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameHandler.GetComponent<GameState>().playerSpawn = transform;
         }
+
     }
 }

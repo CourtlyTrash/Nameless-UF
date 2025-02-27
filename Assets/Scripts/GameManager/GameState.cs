@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour
     public string[] scenes;
     public bool gameOver = false;
     public bool gamePaused = false;
+    public bool currentSpawnActive = true;
 
     private Vector3 spawnPos;
 
@@ -43,10 +44,13 @@ public class GameState : MonoBehaviour
         //TO DO: Add a check to get if the current spawn point is diasabled by the killline.
         spawnPos = new Vector3(playerSpawn.position.x, playerSpawn.position.y, playerSpawn.transform.position.z);
         Destroy(currentPlayer);
-        if (!gameOver)
+        if (!gameOver && currentSpawnActive)
         {
             currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
         }
+ 
+        gameOver = true;
+        
     }
 
     public void destroyPlayer()
