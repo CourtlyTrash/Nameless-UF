@@ -730,7 +730,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Restart
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: daa07831f77f0dc4796e747893d18a15, type: 2}
   m_sharedMaterial: {fileID: -7714969437812289366, guid: daa07831f77f0dc4796e747893d18a15, type: 2}
@@ -864,7 +866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'END
+  m_text: 'Game Over
 
 '
   m_isRightToLeft: 0
@@ -15673,7 +15675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1942719020
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,11 +19,15 @@ public class killLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!gameState.gameOver)
         {
-
-            Vector3 Movement = new Vector3(0,1);
-            transform.Translate(Movement *  MoveSpeedStart * Time.deltaTime);
+            if (!gameState.gamePaused)
+            {
+                Vector3 Movement = new Vector3(0,1);
+                transform.Translate(Movement *  MoveSpeedStart * Time.deltaTime);
+                
+            }
         }
         
     }
