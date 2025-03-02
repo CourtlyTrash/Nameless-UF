@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameUIScript : MonoBehaviour
 {
     private bool escape;
     GameState gameState;
+
+
 
     private void Start()
     {
@@ -14,28 +18,44 @@ public class GameUIScript : MonoBehaviour
 
     private void Update()
     {
+        
         escape = Input.GetKeyDown(KeyCode.Escape);
 
         if (escape)
         {
-            Debug.Log("esc pressed");
+            if (gameState.gamePaused == false)
+            {
+                gameState.gamePaused = true;
+            }
 
-            gameState.gamePaused = true;
+            else if (gameState.gamePaused == true)
+            { 
+                gameState.gamePaused = false;
+            }
+            
         }
     }
 
-    void RestartGame()
+    public void RestartLevel()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
 
+        if (currentScene != null) 
+        { 
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
 
-    void SwitchToMainMenu()
-    { 
+    public void SwitchToMainMenu()
+    {
+        string mainMenuPath = SceneUtility.GetScenePathByBuildIndex(0);
+        string mainMenu = mainMenuPath.Split("/")[2];
+        SceneManager.LoadScene(mainMenu.Split(".")[0]);
         
     }
 
-    void SwitchToNextLevel()
+    public void SwitchToNextLevel()
     {
-
+        SceneUtility.GetBuildIndexByScenePath(SceneManager.GetActiveScene().path);
     }
 }

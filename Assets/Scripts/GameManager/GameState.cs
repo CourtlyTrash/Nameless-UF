@@ -11,11 +11,15 @@ public class GameState : MonoBehaviour
     public string[] scenes;
     public bool gameOver = false;
     public bool gamePaused = false;
-    public bool currentSpawnActive = true;
+    public bool gameEnded = false;
+
 
     private Vector3 spawnPos;
 
-    public GameObject gameOverScreen;
+    
+    [SerializeField] GameObject gameOverScreen;
+    [SerializeField] GameObject levelEndScreen;
+    [SerializeField] GameObject pauseScreen;
 
 
     // Start is called before the first frame update
@@ -37,6 +41,22 @@ public class GameState : MonoBehaviour
         {
             gameOver = true;
         }
+
+        if (gamePaused && gameEnded == false)
+        {
+            pauseScreen.SetActive(true);
+        }
+
+        if (gamePaused == false)
+        {
+            pauseScreen.SetActive(false);
+        }
+
+        if (gameEnded)
+        {
+            levelEndScreen.SetActive(true);
+        }
+        
     }
 
     public void ResetPlayer()
@@ -44,12 +64,12 @@ public class GameState : MonoBehaviour
         //TO DO: Add a check to get if the current spawn point is diasabled by the killline.
         spawnPos = new Vector3(playerSpawn.position.x, playerSpawn.position.y, playerSpawn.transform.position.z);
         Destroy(currentPlayer);
-        if (!gameOver && currentSpawnActive)
+        if (!gameOver)
         {
             currentPlayer = Instantiate(player, spawnPos, playerSpawn.rotation);
         }
  
-        gameOver = true;
+        
         
     }
 

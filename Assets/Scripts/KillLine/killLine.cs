@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class killLine : MonoBehaviour
@@ -22,7 +20,7 @@ public class killLine : MonoBehaviour
         
         if (!gameState.gameOver)
         {
-            if (!gameState.gamePaused)
+            if (gameState.gamePaused == false && gameState.gameEnded == false)
             {
                 Vector3 Movement = new Vector3(0,1);
                 transform.Translate(Movement *  MoveSpeedStart * Time.deltaTime);
@@ -37,19 +35,21 @@ public class killLine : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
 
-            if (gameState.playerSpawn.position.y < gameObject.transform.position.y + gameObject.transform.localScale.y/2)
+            if (gameState.playerSpawn.position.y <= gameObject.transform.position.y + gameObject.transform.localScale.y/2 + 0.1)
             {
-                Debug.Log("spawn under lava");
+                
                 gameState.gameOver = true;
 
             }
             if (gameState.gameOver)
             {
+                
                 gameState.destroyPlayer();
             }
 
             if (!gameState.gameOver)
             {
+               
                 gameState.ResetPlayer();
             }
         }

@@ -8,15 +8,15 @@ using UnityEngine.SceneManagement;
 
 public class levelEndSwitcher : MonoBehaviour
 {
-    SceneManager manager = new SceneManager();
-    string[] AllScenes;
+
+    GameState gameState;
     Scene currentLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-        AllScenes = GameObject.FindGameObjectWithTag("gameHandler").GetComponent<GameState>().scenes;
-        Scene currentLevel = SceneManager.GetActiveScene();
+        gameState = GameObject.FindGameObjectWithTag("gameHandler").GetComponent<GameState>();
+        currentLevel = SceneManager.GetActiveScene();
 
     }
 
@@ -26,14 +26,11 @@ public class levelEndSwitcher : MonoBehaviour
         
     }
 
-    public void NextLevel()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        for (int i = 0; i < AllScenes.Length; i++)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (currentLevel.name == AllScenes[i])
-            {
-                SceneManager.LoadScene(AllScenes[0]);
-            }
+            gameState.gameEnded = true;
         }
     }
 }

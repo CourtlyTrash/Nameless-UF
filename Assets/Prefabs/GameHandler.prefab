@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4129500590438403375}
   - component: {fileID: 1415732920230177982}
+  - component: {fileID: -7485652463948428651}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: gameHandler
@@ -50,3 +51,21 @@ MonoBehaviour:
   scenes:
   - SampleScene
   - testing
+  gameOver: 0
+  gamePaused: 0
+  gameEnded: 0
+  gameOverScreen: {fileID: 0}
+  levelEndScreen: {fileID: 0}
+  pauseScreen: {fileID: 0}
+--- !u!114 &-7485652463948428651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521454726458418062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789b00da631dda047bc2ee78dc9dbff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

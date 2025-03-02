@@ -10,11 +10,11 @@ using static UnityEngine.GraphicsBuffer;
 public class Arrowcontroller : MonoBehaviour
 {
     public Transform player;
-
+    GameState gameState;
     // Start is called before the first frame update
     void Start()
     {
-
+        gameState = GameObject.Find("GameHandler").GetComponent<GameState>();
     }
 
     // Update is called once per frame
@@ -25,6 +25,10 @@ public class Arrowcontroller : MonoBehaviour
 
         Vector2 direction = new Vector2(mousePos.x - player.position.x, mousePos.y - player.position.y);
         
-        transform.up = direction;
+        if (gameState.gamePaused == false && gameState.gameEnded == false)
+        {
+            transform.up = direction;
+
+        }
     }
 }

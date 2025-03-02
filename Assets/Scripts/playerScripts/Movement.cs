@@ -20,8 +20,8 @@ public class Movement : MonoBehaviour
     private Rigidbody2D RB;
     private Animator animator;
     
-    const float groundCheckRadius = 0.5f;
-
+    const float groundCheckRadius = 0.2f;
+    GameState gameState;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class Movement : MonoBehaviour
         RB = gameObject.GetComponent<Rigidbody2D>();
         grounded = false;
         animator = GetComponent<Animator>();
+        gameState = GameObject.Find("GameHandler").GetComponent<GameState>();
     }
 
     void GroundCheck()
@@ -54,14 +55,14 @@ public class Movement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
         Vector2 movement = new Vector2(horizontalInput * playerSpeed, 0);
-        if (grounded && RB.velocity.magnitude < maxMoveVelocity)
+        if (grounded && RB.velocity.magnitude < maxMoveVelocity && gameState.gamePaused == false)
         {
             //transform.Translate(movement  * playerSpeed * Time.deltaTime);
             RB.AddForce(movement);
             
         }
 
-        if(jump && grounded)
+        if(jump && grounded && gameState.gamePaused == false && gameState.gameEnded == false)
         {
             float jumpPowerX = Mathf.Cos(jumpArrow.rotation.eulerAngles.z * (Mathf.PI/180) + Mathf.PI/2); // Calculates the amount of power in the X axis and offsets it 90 degrees clockwise
             float jumpPowerY = Mathf.Sin(jumpArrow.rotation.eulerAngles.z * (Mathf.PI / 180) + Mathf.PI/2); // Calculates the amount of power in the Y axis and offsets it 90 degrees clockwise
