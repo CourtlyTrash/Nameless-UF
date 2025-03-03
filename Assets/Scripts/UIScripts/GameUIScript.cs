@@ -51,7 +51,7 @@ public class GameUIScript : MonoBehaviour
         string mainMenuPath = SceneUtility.GetScenePathByBuildIndex(0);
         string mainMenu = mainMenuPath.Split("/")[2];
         SceneManager.LoadScene(mainMenu.Split(".")[0]);
-        
+        Debug.Log(mainMenu);
     }
 
     public void SwitchToNextLevel()

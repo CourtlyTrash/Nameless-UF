@@ -20,7 +20,7 @@ public class killLine : MonoBehaviour
         
         if (!gameState.gameOver)
         {
-            if (gameState.gamePaused == false && gameState.gameEnded == false)
+            if (gameState.gamePaused == false && gameState.gameEnded == false && gameState.playerLeftStart)
             {
                 Vector3 Movement = new Vector3(0,1);
                 transform.Translate(Movement *  MoveSpeedStart * Time.deltaTime);

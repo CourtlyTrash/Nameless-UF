@@ -8,10 +8,11 @@ public class GameState : MonoBehaviour
     public Transform playerSpawn;
     public GameObject player;
     public GameObject currentPlayer;
-    public string[] scenes;
+
     public bool gameOver = false;
     public bool gamePaused = false;
     public bool gameEnded = false;
+    public bool playerLeftStart = false;
 
 
     private Vector3 spawnPos;
