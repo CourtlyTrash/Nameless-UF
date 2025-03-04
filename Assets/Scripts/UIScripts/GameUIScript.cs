@@ -56,6 +56,6 @@ public class GameUIScript : MonoBehaviour
 
     public void SwitchToNextLevel()
     {
-        SceneUtility.GetBuildIndexByScenePath(SceneManager.GetActiveScene().path);
+        SceneManager.LoadScene("Level_2");
     }
 }

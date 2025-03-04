@@ -21,6 +21,7 @@ public class GameState : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject levelEndScreen;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject timer;
 
 
     // Start is called before the first frame update
@@ -43,7 +44,7 @@ public class GameState : MonoBehaviour
             gameOver = true;
         }
 
-        if (gamePaused && gameEnded == false)
+        if (gamePaused && gameEnded == false && gameOver == false) 
         {
             pauseScreen.SetActive(true);
         }
@@ -56,8 +57,22 @@ public class GameState : MonoBehaviour
         if (gameEnded)
         {
             levelEndScreen.SetActive(true);
+
+            if(timer != null)
+            {
+                timer.GetComponent<Timer>().StopTimer();
+
+            }
         }
         
+        if (playerLeftStart)
+        {
+            if (timer != null)
+            {
+
+                timer.GetComponent<Timer>().StartTimer();
+            }
+        }
     }
 
     public void ResetPlayer()

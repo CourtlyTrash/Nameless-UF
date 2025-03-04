@@ -140,7 +140,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 52.346252, y: -20.203094}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 2856.5, y: 1710}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8285162284082977602
 CanvasRenderer:
@@ -312,7 +312,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &7264029648595036755
 GameObject:
   m_ObjectHideFlags: 0

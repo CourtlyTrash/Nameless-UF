@@ -35,7 +35,7 @@ public class killLine : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
 
-            if (gameState.playerSpawn.position.y <= gameObject.transform.position.y + gameObject.transform.localScale.y/2 + 0.1)
+            if (gameState.playerSpawn.position.y <= gameObject.transform.position.y + gameObject.transform.localScale.y/2 + 0.3)
             {
                 
                 gameState.gameOver = true;
