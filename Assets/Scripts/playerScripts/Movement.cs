@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D RB;
     private Animator animator;
     
-    const float groundCheckRadius = 0.2f;
+    const float groundCheckRadius = 0.35f;
     GameState gameState;
 
     // Start is called before the first frame update
