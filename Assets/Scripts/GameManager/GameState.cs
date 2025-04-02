@@ -73,6 +73,13 @@ public class GameState : MonoBehaviour
                 timer.GetComponent<Timer>().StartTimer();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            GameObject mainCamera = GameObject.Find("Main Camera");
+
+            mainCamera.GetComponent<ScreenShake>().StartscreenShake(1,10,10);
+        }
     }
 
     public void ResetPlayer()
