@@ -106,22 +106,26 @@ public class Movement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        if (horizontalInput < 0 && !flipped)
+        if (horizontalInput < 0 && !sprite.flipX)
         {
             Vector3 scale = transform.localScale;
             scale.x *= -1;
-            transform.localScale = scale;
+            //transform.localScale = scale;
 
             flipped = !flipped;
+            sprite.flipX = true;
+            //Debug.Log("not flipped");
         }
 
-        else if (horizontalInput > 0 && flipped)
+        else if (horizontalInput > 0 && sprite.flipX)
         {
             Vector3 scale = transform.localScale;
             scale.x *= -1;
-            transform.localScale = scale;
+            //transform.localScale = scale;
 
             flipped = !flipped;
+
+            sprite.flipX = false;
         }
 
     }
